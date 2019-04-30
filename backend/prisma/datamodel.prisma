@@ -1,0 +1,22 @@
+type User {
+  id: ID! @id
+  name: String!
+  email: String! @unique
+  password: String!
+  contacts: [Contact!]
+}
+
+type Contact {
+  id: ID! @id
+  isAccepted: Boolean @default(value: false)
+  users: [User!]!
+  chat: [Message!]
+}
+
+type Message {
+  id: ID! @id
+  isRecieved: Boolean @default(value: false)
+  isRead: Boolean @default(value: false)
+  sent: DateTime!
+  text: String!
+}
