@@ -22,7 +22,7 @@ type Contact {
   id: ID!
   isAccepted: Boolean
   users: [User!]!
-  chat: [Message!]
+  messages: [Message!]
 }
 
 type Message {

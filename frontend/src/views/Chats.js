@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Heading } from 'grommet'
-import { Location, Router } from '@reach/router'
+import { Location } from '@reach/router'
 
 export default function chats() {
   return (

@@ -296,9 +296,9 @@ export interface ContactWhereInput {
   users_every?: UserWhereInput;
   users_some?: UserWhereInput;
   users_none?: UserWhereInput;
-  chat_every?: MessageWhereInput;
-  chat_some?: MessageWhereInput;
-  chat_none?: MessageWhereInput;
+  messages_every?: MessageWhereInput;
+  messages_some?: MessageWhereInput;
+  messages_none?: MessageWhereInput;
   AND?: ContactWhereInput[] | ContactWhereInput;
   OR?: ContactWhereInput[] | ContactWhereInput;
   NOT?: ContactWhereInput[] | ContactWhereInput;
@@ -363,7 +363,7 @@ export interface ContactCreateInput {
   id?: ID_Input;
   isAccepted?: Boolean;
   users?: UserCreateManyWithoutContactsInput;
-  chat?: MessageCreateManyInput;
+  messages?: MessageCreateManyInput;
 }
 
 export interface UserCreateManyWithoutContactsInput {
@@ -394,7 +394,7 @@ export interface MessageCreateInput {
 export interface ContactUpdateInput {
   isAccepted?: Boolean;
   users?: UserUpdateManyWithoutContactsInput;
-  chat?: MessageUpdateManyInput;
+  messages?: MessageUpdateManyInput;
 }
 
 export interface UserUpdateManyWithoutContactsInput {
@@ -633,7 +633,7 @@ export interface ContactCreateManyWithoutUsersInput {
 export interface ContactCreateWithoutUsersInput {
   id?: ID_Input;
   isAccepted?: Boolean;
-  chat?: MessageCreateManyInput;
+  messages?: MessageCreateManyInput;
 }
 
 export interface UserUpdateInput {
@@ -668,7 +668,7 @@ export interface ContactUpdateWithWhereUniqueWithoutUsersInput {
 
 export interface ContactUpdateWithoutUsersDataInput {
   isAccepted?: Boolean;
-  chat?: MessageUpdateManyInput;
+  messages?: MessageUpdateManyInput;
 }
 
 export interface ContactUpsertWithWhereUniqueWithoutUsersInput {
@@ -768,7 +768,7 @@ export interface ContactPromise extends Promise<Contact>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
-  chat: <T = FragmentableArray<Message>>(args?: {
+  messages: <T = FragmentableArray<Message>>(args?: {
     where?: MessageWhereInput;
     orderBy?: MessageOrderByInput;
     skip?: Int;
@@ -793,7 +793,7 @@ export interface ContactSubscription
     first?: Int;
     last?: Int;
   }) => T;
-  chat: <T = Promise<AsyncIterator<MessageSubscription>>>(args?: {
+  messages: <T = Promise<AsyncIterator<MessageSubscription>>>(args?: {
     where?: MessageWhereInput;
     orderBy?: MessageOrderByInput;
     skip?: Int;

@@ -1,26 +1,21 @@
 import React from 'react'
-import { Box, Heading, ResponsiveContext } from 'grommet'
-import { Location } from '@reach/router'
+import { Box, Heading } from 'grommet'
+import { Link } from '@reach/router'
 
 export default function header() {
   return (
-    <ResponsiveContext.Consumer>
-      {size => (
-        <Location>
-          {props => (
-            <Box
-              background="light-1"
-              gridArea="header"
-              border="bottom"
-              style={{ position: 'sticky', top: 0, zIndex: 1 }}
-            >
-              <Heading level={4} margin="medium">
-                Chat
-              </Heading>
-            </Box>
-          )}
-        </Location>
-      )}
-    </ResponsiveContext.Consumer>
+    <Box pad="medium" direction="row" align="center" justify="between">
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <Heading level={3} margin="none" color="dark-1">
+          Chat
+        </Heading>
+      </Link>
+
+      <Link to="/contacts" style={{ textDecoration: 'none' }}>
+        <Heading level={3} margin="none" color="dark-5">
+          Contacts
+        </Heading>
+      </Link>
+    </Box>
   )
 }

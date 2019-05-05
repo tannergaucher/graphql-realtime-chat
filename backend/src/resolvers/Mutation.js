@@ -38,7 +38,6 @@ const Mutation = {
   logout: (parent, { id }, context) => {
     return { message: 'Goodbye' }
   },
-
   createContact: async (parent, { requestedId }, context) => {
     // get the userId from request
     const userId = getUserId(context)
@@ -47,9 +46,9 @@ const Mutation = {
       throw new AuthError()
     }
 
-    // create a contect connecting the 2 users
-
+    // create a contact connecting the 2 users
     // TODO: Check if contact already exists btw users and return if so
+    // look for a contact that has both users and
     const contact = await context.prisma.createContact({
       users: {
         connect: [{ id: userId }, { id: requestedId }],

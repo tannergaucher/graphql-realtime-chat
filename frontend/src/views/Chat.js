@@ -1,29 +1,17 @@
 import React from 'react'
-import { Box, TextInput } from 'grommet'
-
 import Message from '../components/message'
 
 export default function Chat() {
   return (
     <>
-      <Box background="light-3" flex="grow" fill="vertical">
-        <Message text="Hey man" />
-        <Message text="Hey, hows is going?" isMe />
-        <Message text="Going well" />
-        <Message text="Want to eat go some ice cream" isRepeating />
-        <Message text="I found a new place" isRepeating />
-        <Message text="Yes, that sounds great" isMe />
-        <Message text="let's go" isMe />
-      </Box>
-      <Send />
+      <Message text="I'm a message" />
+      <Message text="I'm a message from me" isMe />
+      <Message text="Oh, really?" />
+      <Message text="Oh, really?" isMe />
+      <Message text="Yass" />
+      <Message text="R U coming soon?" isRepeating />
+      <Message text="I'm hungry" isRepeating />
+      <Message text="On my way!" isMe />
     </>
-  )
-}
-
-function Send() {
-  return (
-    <Box style={{ position: 'sticky', bottom: 0 }}>
-      <TextInput placeholder="Send" />
-    </Box>
   )
 }

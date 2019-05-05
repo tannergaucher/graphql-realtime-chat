@@ -23,7 +23,7 @@ type Contact {
   id: ID!
   isAccepted: Boolean
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
-  chat(where: MessageWhereInput, orderBy: MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Message!]
+  messages(where: MessageWhereInput, orderBy: MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Message!]
 }
 
 type ContactConnection {
@@ -36,7 +36,7 @@ input ContactCreateInput {
   id: ID
   isAccepted: Boolean
   users: UserCreateManyWithoutContactsInput
-  chat: MessageCreateManyInput
+  messages: MessageCreateManyInput
 }
 
 input ContactCreateManyWithoutUsersInput {
@@ -47,7 +47,7 @@ input ContactCreateManyWithoutUsersInput {
 input ContactCreateWithoutUsersInput {
   id: ID
   isAccepted: Boolean
-  chat: MessageCreateManyInput
+  messages: MessageCreateManyInput
 }
 
 type ContactEdge {
@@ -110,7 +110,7 @@ input ContactSubscriptionWhereInput {
 input ContactUpdateInput {
   isAccepted: Boolean
   users: UserUpdateManyWithoutContactsInput
-  chat: MessageUpdateManyInput
+  messages: MessageUpdateManyInput
 }
 
 input ContactUpdateManyDataInput {
@@ -140,7 +140,7 @@ input ContactUpdateManyWithWhereNestedInput {
 
 input ContactUpdateWithoutUsersDataInput {
   isAccepted: Boolean
-  chat: MessageUpdateManyInput
+  messages: MessageUpdateManyInput
 }
 
 input ContactUpdateWithWhereUniqueWithoutUsersInput {
@@ -174,9 +174,9 @@ input ContactWhereInput {
   users_every: UserWhereInput
   users_some: UserWhereInput
   users_none: UserWhereInput
-  chat_every: MessageWhereInput
-  chat_some: MessageWhereInput
-  chat_none: MessageWhereInput
+  messages_every: MessageWhereInput
+  messages_some: MessageWhereInput
+  messages_none: MessageWhereInput
   AND: [ContactWhereInput!]
   OR: [ContactWhereInput!]
   NOT: [ContactWhereInput!]

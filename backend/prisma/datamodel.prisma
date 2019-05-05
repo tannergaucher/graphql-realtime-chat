@@ -9,8 +9,8 @@ type User {
 type Contact {
   id: ID! @id
   isAccepted: Boolean @default(value: false)
-  users: [User!]!
-  chat: [Message!]
+  users: [User!]! @unique
+  messages: [Message!]
 }
 
 type Message {

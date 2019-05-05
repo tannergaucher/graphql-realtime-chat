@@ -3,7 +3,6 @@ import { Box } from 'grommet'
 
 import Contact from '../components/contact'
 
-// tabs: ALL | ONLINE |
 export default function Contacts() {
   return (
     <Box>

@@ -1,96 +1,94 @@
 import React from 'react'
-import { Box, Heading, Text, TextInput } from 'grommet'
+import { Box, TextInput } from 'grommet'
 
-import Avatar from '../components/avatar'
+import ChatPreview from '../components/chat-preview'
 
 export default function sidebar() {
   return (
-    <Box
-      background="accent-1"
-      style={{
-        position: 'sticky',
-        top: 0,
-        overflow: 'scroll',
-      }}
-    >
-      <SearchInput />
-      <ChatPreview name="Tranner Graucher" isOnline message="Hey what's up?" />
-      <ChatPreview
-        name="Rumble Dillskin"
-        isOnline
-        message="RU up?"
-        isReciever
-        isUnread
-      />
-      <ChatPreview
-        name="Notreal Person"
-        message="Shin Ciao, hermao..."
-        isUnread
-      />
-      <ChatPreview name="Some Friend's Name" />
-      <ChatPreview name="Tranner Graucher" isOnline />
-      <ChatPreview name="Rumble Dillskin" isOnline />
-      <ChatPreview name="Notreal Person" isUnread />
-      <ChatPreview name="Some Friend's Name" isReciever isUnread />
-      <ChatPreview name="Tranner Graucher" isOnline />
-      <ChatPreview name="Rumble Dillskin" isOnline />
-      <ChatPreview name="Notreal Person" />
-      <ChatPreview name="Some Friend's Name" />
-    </Box>
-  )
-}
+    <Box basis="1/4" className="side-bar" pad="small" background="light-1">
+      <TextInput />
 
-function ChatPreview({ name, message, isOnline, isUnread, isReciever }) {
-  return (
-    <Box background="light-1" pad="xsmall" direction="row" align="center">
-      <Avatar isOnline={isOnline} />
+      <Box overflow="scroll" margin={{ vertical: 'small' }}>
+        {/* MOCK CHATS */}
+        <ChatPreview
+          name="Tasner Grsaucher"
+          message="hell, oh world"
+          isOnline
+          isReciever
+          isUnread
+        />
 
-      <Box direction="row" fill="horizontal" justify="between" align="center">
-        <Box margin={{ left: 'xsmall' }}>
-          <Heading level={4} margin="none" alignSelf="start">
-            {name}
-          </Heading>
-          <Text size="xsmall">{message}</Text>
-        </Box>
-        {isReciever && isUnread && <UnreadDot />}
-        {!isReciever && isUnread && <MiniAvatar />}
+        <ChatPreview
+          name="Tucker Kaarlson"
+          message="Ich haben die ice cream"
+          isOnline
+        />
+
+        <ChatPreview
+          name="Tasner Grsaucher"
+          message="hell, oh world"
+          isReciever
+          isUnread
+        />
+
+        <ChatPreview
+          name="Joe Rogaan"
+          message="hell, oh world"
+          isOnline
+          isUnread
+        />
+
+        <ChatPreview
+          name="Tucker Kaarlson"
+          message="Ich haben die ice cream"
+          isOnline
+        />
+
+        <ChatPreview
+          name="Tasner Grsaucher"
+          message="hell, oh world"
+          isReciever
+          isUnread
+        />
+
+        <ChatPreview
+          name="Tasner Grsaucher"
+          message="hell, oh world"
+          isReciever
+          isUnread
+        />
+
+        <ChatPreview
+          name="Joe Rogaan"
+          message="hell, oh world"
+          isOnline
+          isUnread
+        />
+
+        <ChatPreview
+          name="Joe Rogaan"
+          message="hell, oh world"
+          isOnline
+          isUnread
+        />
+
+        <ChatPreview
+          name="Tasner Grsaucher"
+          message="hell, oh world"
+          isReciever
+          isUnread
+        />
+
+        <ChatPreview
+          name="Joe Rogaan"
+          message="hell, oh world"
+          isOnline
+          isUnread
+        />
+
+        <ChatPreview name="Joe Rogaan" message="sup dude" isOnline />
+        {/* END MOCK CHATS */}
       </Box>
     </Box>
-  )
-}
-
-function SearchInput() {
-  return (
-    <Box margin="small" background="light-2">
-      <TextInput placeholder="Search" round="medium" />
-    </Box>
-  )
-}
-
-function UnreadDot() {
-  return (
-    <Box
-      margin="small"
-      background="accent-2"
-      style={{
-        height: '8px',
-        width: '8px',
-        borderRadius: '50%',
-      }}
-    />
-  )
-}
-
-function MiniAvatar() {
-  return (
-    <Box
-      margin="small"
-      background="dark-2"
-      style={{
-        height: '8px',
-        width: '8px',
-        borderRadius: '50%',
-      }}
-    />
   )
 }

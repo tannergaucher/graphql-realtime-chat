@@ -5,7 +5,7 @@ import Avatar from '../components/avatar'
 
 export default function message({ avatarURL, text, isMe, isRepeating }) {
   return (
-    <Box margin={{ vertical: 'xsmall', horizontal: 'small' }}>
+    <Box margin={{ vertical: 'xxsmall', horizontal: 'small' }}>
       {isMe ? (
         <Me text={text} isRepeating={isRepeating} />
       ) : (
