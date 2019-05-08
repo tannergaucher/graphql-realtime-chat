@@ -1,11 +1,12 @@
 import React from 'react'
 import { Box, Stack } from 'grommet'
 
-export default function avatar({ avatarURL, isOnline, small }) {
+export default function avatar({ avatarUrl, isOnline, small }) {
   return (
     <Stack anchor="bottom-right">
-      <Box
-        background="neutral-3"
+      <img
+        src={avatarUrl}
+        alt="user avatar"
         style={{
           height: small ? '30px' : '50px',
           width: small ? '30px' : '50px',

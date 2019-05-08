@@ -15,32 +15,30 @@ type User {
   name: String!
   email: String!
   password: String!
-  contacts: [Contact!]
-}
-
-type Contact {
-  id: ID!
-  isAccepted: Boolean
-  users: [User!]!
-  messages: [Message!]
+  avatarUrl: String
+  messages: [Message]
 }
 
 type Message {
   id: ID!
-  isRecieved: Boolean
-  isRead: Boolean
-  sent: DateTime
-  text: String!
+  user: User
+  message: String!
 }
 
 type Query {
   me: User
   users: [User!]
+  messages: [Message!]
 }
 
 type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String): AuthPayload!
-  logout: SuccessMessage
-  createContact(requestedId: ID!): Contact!
+  signout: SuccessMessage
+  sendMessage(message: String!): Message
+  updateAvatarUrl(avatarUrl: String!): User
+}
+
+type Subscription {
+  messageSent: Message
 }

@@ -1,13 +1,15 @@
 const { Query } = require('./Query')
 const { Mutation } = require('./Mutation')
+const { Subscription } = require('./Subscription')
 const { User } = require('./User')
-const { Contact } = require('./Contact')
+const { Message } = require('./Message')
 
 const resolvers = {
   Query,
   Mutation,
   User,
-  Contact,
+  Subscription,
+  Message,
 }
 
 module.exports = {

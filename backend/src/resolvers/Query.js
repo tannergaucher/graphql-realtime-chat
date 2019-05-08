@@ -13,6 +13,9 @@ const Query = {
   users: async (parent, args, context) => {
     return context.prisma.users()
   },
+  messages: (parent, args, context) => {
+    return context.prisma.messages()
+  },
 }
 
 module.exports = {

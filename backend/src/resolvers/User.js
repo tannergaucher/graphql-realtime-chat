@@ -1,6 +1,6 @@
 const User = {
-  contacts: ({ id }, args, context) => {
-    return context.prisma.user({ id }).contacts()
+  messages: ({ id }, args, context) => {
+    return context.prisma.user({ id }).messages()
   },
 }
 
