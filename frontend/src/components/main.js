@@ -1,29 +1,26 @@
 import React from 'react'
-import { Box, TextInput } from 'grommet'
+import { Box } from 'grommet'
 import { Router } from '@reach/router'
 
 import Sidebar from '../components/sidebar'
-import Chat from '../views/Chat'
-import Chats from '../views/Chats'
-import Contacts from '../views/Contacts'
-import Login from '../views/login'
+import ChatPageContainer from '../containers/chat-page-container'
+import SendMessageContainer from '../containers/send-message-container'
+import UploadAvatar from '../pages/upload-avatar'
+import Login from '../pages/login'
 
 export default function main() {
   return (
     <Box direction="row" fill="vertical">
-      {/* CONDITIONAL RENDER SIDEBAR */}
       <Sidebar />
       <Box basis="3/4" className="main-content" pad="small" fill="vertical">
         <Box overflow="scroll" fill="vertical">
           <Router>
-            <Chat path="/" />
-            <Chats path="/" />
-            <Contacts path="/contacts" />
+            <ChatPageContainer path="/" />
             <Login path="login" />
+            <UploadAvatar path="/upload-avatar" />
           </Router>
         </Box>
-        {/* CONDITIONAL RENDER  SEARCH*/}
-        <TextInput />
+        <SendMessageContainer />
       </Box>
     </Box>
   )

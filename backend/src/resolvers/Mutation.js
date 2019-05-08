@@ -2,6 +2,8 @@ const { hash, compare } = require('bcrypt')
 const { sign } = require('jsonwebtoken')
 const { getUserId, AuthError } = require('../utils/getUserId')
 
+const MESSAGE_SENT = 'MESSAGE_SENT'
+
 const Mutation = {
   signup: async (parent, { name, email, password }, context) => {
     const hashedPassword = await hash(password, 10)
@@ -35,27 +37,39 @@ const Mutation = {
       user,
     }
   },
-  logout: (parent, { id }, context) => {
-    return { message: 'Goodbye' }
+
+  signout: (parent, { id }, context) => {
+    return { message: ' Goodbye' }
   },
-  createContact: async (parent, { requestedId }, context) => {
-    // get the userId from request
+  sendMessage: async (parent, { message }, context) => {
     const userId = getUserId(context)
 
-    if (!userId) {
-      throw new AuthError()
-    }
-
-    // create a contact connecting the 2 users
-    // TODO: Check if contact already exists btw users and return if so
-    // look for a contact that has both users and
-    const contact = await context.prisma.createContact({
-      users: {
-        connect: [{ id: userId }, { id: requestedId }],
+    const newMessage = await context.prisma.createMessage({
+      message,
+      user: {
+        connect: {
+          id: userId,
+        },
       },
     })
 
-    return contact
+    context.pubsub.publish(MESSAGE_SENT, { messageSent: newMessage })
+
+    return newMessage
+  },
+  updateAvatarUrl: async (parent, { avatarUrl }, context) => {
+    const userId = getUserId(context)
+
+    const user = await context.prisma.updateUser({
+      where: {
+        id: userId,
+      },
+      data: {
+        avatarUrl,
+      },
+    })
+
+    return user
   },
 }
 

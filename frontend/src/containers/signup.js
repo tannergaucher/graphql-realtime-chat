@@ -38,9 +38,9 @@ export default function Signup() {
           <Form
             onSubmit={async e => {
               const res = await signup()
-              client.resetStore()
+              client.writeData({ data: { isLoggedIn: true } })
               localStorage.setItem('token', res.data.signup.token)
-              navigate(`/`)
+              navigate(`/upload-avatar`)
             }}
           >
             <Error error={error} />

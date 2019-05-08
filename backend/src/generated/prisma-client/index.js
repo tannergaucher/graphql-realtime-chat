@@ -9,10 +9,6 @@ var models = [
     embedded: false
   },
   {
-    name: "Contact",
-    embedded: false
-  },
-  {
     name: "Message",
     embedded: false
   }

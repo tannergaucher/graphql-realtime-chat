@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "bcrypt": "^3.0.6",
     "dotenv": "^7.0.0",
     "graphql-yoga": "^1.17.4",
+    "nodemon": "^1.19.0",
     "prisma-client-lib": "^1.31.0"
   }
 }

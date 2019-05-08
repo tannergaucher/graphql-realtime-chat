@@ -6,6 +6,9 @@
     "@reach/router": "^1.2.1",
     "apollo-boost": "^0.3.1",
     "apollo-client": "^2.5.1",
+    "apollo-link-context": "^1.0.17",
+    "apollo-link-ws": "^1.0.17",
+    "apollo-utilities": "^1.2.1",
     "graphql": "^14.2.1",
     "grommet": "^2.6.6",
     "icons": "^1.0.0",
@@ -14,7 +17,8 @@
     "react-apollo-hooks": "^0.4.5",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "subscriptions-transport-ws": "^0.9.16"
   },
   "scripts": {
     "start": "react-scripts start",
