@@ -1,31 +1,31 @@
 import React from 'react'
 import { Box, Heading } from 'grommet'
 import { Link } from '@reach/router'
-import { useQuery } from 'react-apollo-hooks'
+import { useQuery } from '@apollo/react-hooks'
 
-import Logout from '../containers/logout'
-import { IS_LOGGED_IN } from './app'
+import { Logout } from '../user'
+
+import { IS_LOGGED_IN } from '../apollo/graphql'
 
 export default function Header() {
-  const { data } = useQuery(IS_LOGGED_IN)
+  // prettier-ignore
+  const { data: {isLoggedIn} } = useQuery(IS_LOGGED_IN)
 
   return (
     <Box pad="medium" direction="row" align="center" justify="between">
       <Link to="/" style={{ textDecoration: 'none' }}>
         <Brand />
       </Link>
-      {data.isLoggedIn ? <Logout /> : <Login />}
+      {isLoggedIn ? <Logout /> : <Login />}
     </Box>
   )
 }
 
-function Brand() {
-  return (
-    <Heading level={3} margin="none" color="dark-1">
-      Chat App
-    </Heading>
-  )
-}
+const Brand = () => (
+  <Heading level={3} margin="none" color="dark-1">
+    Chat App
+  </Heading>
+)
 
 const Login = () => (
   <Link to="/login" style={{ textDecoration: 'none' }}>

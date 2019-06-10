@@ -1,8 +1,7 @@
 import React from 'react'
 import { Tabs, Tab, Box, Heading } from 'grommet'
 
-import Login from '../containers/login'
-import Signup from '../containers/signup'
+import { Login, Signup } from '../components/user'
 
 export default function login() {
   return (

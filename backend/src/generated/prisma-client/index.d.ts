@@ -156,7 +156,9 @@ export type UserOrderByInput =
   | "password_ASC"
   | "password_DESC"
   | "avatarUrl_ASC"
-  | "avatarUrl_DESC";
+  | "avatarUrl_DESC"
+  | "isOnline_ASC"
+  | "isOnline_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -273,6 +275,8 @@ export interface UserWhereInput {
   messages_every?: Maybe<MessageWhereInput>;
   messages_some?: Maybe<MessageWhereInput>;
   messages_none?: Maybe<MessageWhereInput>;
+  isOnline?: Maybe<Boolean>;
+  isOnline_not?: Maybe<Boolean>;
   AND?: Maybe<UserWhereInput[] | UserWhereInput>;
   OR?: Maybe<UserWhereInput[] | UserWhereInput>;
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
@@ -300,6 +304,7 @@ export interface UserCreateWithoutMessagesInput {
   email: String;
   password: String;
   avatarUrl?: Maybe<String>;
+  isOnline?: Maybe<Boolean>;
 }
 
 export interface MessageUpdateInput {
@@ -319,6 +324,7 @@ export interface UserUpdateWithoutMessagesDataInput {
   email?: Maybe<String>;
   password?: Maybe<String>;
   avatarUrl?: Maybe<String>;
+  isOnline?: Maybe<Boolean>;
 }
 
 export interface UserUpsertWithoutMessagesInput {
@@ -337,6 +343,7 @@ export interface UserCreateInput {
   password: String;
   avatarUrl?: Maybe<String>;
   messages?: Maybe<MessageCreateManyWithoutUserInput>;
+  isOnline?: Maybe<Boolean>;
 }
 
 export interface MessageCreateManyWithoutUserInput {
@@ -357,6 +364,7 @@ export interface UserUpdateInput {
   password?: Maybe<String>;
   avatarUrl?: Maybe<String>;
   messages?: Maybe<MessageUpdateManyWithoutUserInput>;
+  isOnline?: Maybe<Boolean>;
 }
 
 export interface MessageUpdateManyWithoutUserInput {
@@ -445,6 +453,7 @@ export interface UserUpdateManyMutationInput {
   email?: Maybe<String>;
   password?: Maybe<String>;
   avatarUrl?: Maybe<String>;
+  isOnline?: Maybe<Boolean>;
 }
 
 export interface MessageSubscriptionWhereInput {
@@ -506,6 +515,7 @@ export interface User {
   email: String;
   password: String;
   avatarUrl?: String;
+  isOnline?: Boolean;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
@@ -523,6 +533,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  isOnline: () => Promise<Boolean>;
 }
 
 export interface UserSubscription
@@ -542,6 +553,7 @@ export interface UserSubscription
     first?: Int;
     last?: Int;
   }) => T;
+  isOnline: () => Promise<AsyncIterator<Boolean>>;
 }
 
 export interface UserNullablePromise
@@ -561,6 +573,7 @@ export interface UserNullablePromise
     first?: Int;
     last?: Int;
   }) => T;
+  isOnline: () => Promise<Boolean>;
 }
 
 export interface MessageConnection {
@@ -785,6 +798,7 @@ export interface UserPreviousValues {
   email: String;
   password: String;
   avatarUrl?: String;
+  isOnline?: Boolean;
 }
 
 export interface UserPreviousValuesPromise
@@ -795,6 +809,7 @@ export interface UserPreviousValuesPromise
   email: () => Promise<String>;
   password: () => Promise<String>;
   avatarUrl: () => Promise<String>;
+  isOnline: () => Promise<Boolean>;
 }
 
 export interface UserPreviousValuesSubscription
@@ -805,6 +820,7 @@ export interface UserPreviousValuesSubscription
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   avatarUrl: () => Promise<AsyncIterator<String>>;
+  isOnline: () => Promise<AsyncIterator<Boolean>>;
 }
 
 /*
@@ -819,14 +835,14 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number;
-
-/*
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+*/
+export type Int = number;
 
 export type Long = string;
 

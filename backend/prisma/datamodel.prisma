@@ -5,6 +5,7 @@ type User {
   password: String!
   avatarUrl: String
   messages: [Message]
+  isOnline: Boolean @default(value: false)
 }
 
 type Message {

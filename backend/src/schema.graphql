@@ -17,6 +17,7 @@ type User {
   password: String!
   avatarUrl: String
   messages: [Message]
+  isOnline: Boolean
 }
 
 type Message {
@@ -37,6 +38,8 @@ type Mutation {
   signout: SuccessMessage
   sendMessage(message: String!): Message
   updateAvatarUrl(avatarUrl: String!): User
+  setUserOnline: User
+  setUserOffline: User
 }
 
 type Subscription {

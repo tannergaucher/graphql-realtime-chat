@@ -252,6 +252,7 @@ type User {
   password: String!
   avatarUrl: String
   messages(where: MessageWhereInput, orderBy: MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Message!]
+  isOnline: Boolean
 }
 
 type UserConnection {
@@ -267,6 +268,7 @@ input UserCreateInput {
   password: String!
   avatarUrl: String
   messages: MessageCreateManyWithoutUserInput
+  isOnline: Boolean
 }
 
 input UserCreateOneWithoutMessagesInput {
@@ -280,6 +282,7 @@ input UserCreateWithoutMessagesInput {
   email: String!
   password: String!
   avatarUrl: String
+  isOnline: Boolean
 }
 
 type UserEdge {
@@ -298,6 +301,8 @@ enum UserOrderByInput {
   password_DESC
   avatarUrl_ASC
   avatarUrl_DESC
+  isOnline_ASC
+  isOnline_DESC
 }
 
 type UserPreviousValues {
@@ -306,6 +311,7 @@ type UserPreviousValues {
   email: String!
   password: String!
   avatarUrl: String
+  isOnline: Boolean
 }
 
 type UserSubscriptionPayload {
@@ -332,6 +338,7 @@ input UserUpdateInput {
   password: String
   avatarUrl: String
   messages: MessageUpdateManyWithoutUserInput
+  isOnline: Boolean
 }
 
 input UserUpdateManyMutationInput {
@@ -339,6 +346,7 @@ input UserUpdateManyMutationInput {
   email: String
   password: String
   avatarUrl: String
+  isOnline: Boolean
 }
 
 input UserUpdateOneRequiredWithoutMessagesInput {
@@ -353,6 +361,7 @@ input UserUpdateWithoutMessagesDataInput {
   email: String
   password: String
   avatarUrl: String
+  isOnline: Boolean
 }
 
 input UserUpsertWithoutMessagesInput {
@@ -434,6 +443,8 @@ input UserWhereInput {
   messages_every: MessageWhereInput
   messages_some: MessageWhereInput
   messages_none: MessageWhereInput
+  isOnline: Boolean
+  isOnline_not: Boolean
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

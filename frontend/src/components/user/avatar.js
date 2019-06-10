@@ -3,7 +3,7 @@ import { Box, Stack } from 'grommet'
 
 export default function avatar({ avatarUrl, isOnline, small }) {
   return (
-    <Stack anchor="bottom-right">
+    <Stack anchor="bottom-right" style={{ margin: 'none' }}>
       {avatarUrl ? (
         <AvatarImage small={small} avatarUrl={avatarUrl} />
       ) : (

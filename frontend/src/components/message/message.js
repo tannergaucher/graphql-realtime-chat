@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { Box, Text, Heading } from 'grommet'
 
-import Avatar from '../components/avatar'
+import Avatar from '../user/avatar'
 
 export default function Message({ avatarUrl, message, name, isLatest }) {
   const messageRef = useRef()
@@ -10,7 +10,7 @@ export default function Message({ avatarUrl, message, name, isLatest }) {
     if (isLatest) {
       messageRef.current.scrollIntoView({ behavior: 'smooth' })
     }
-  }, [])
+  }, [isLatest])
 
   return (
     <Box
@@ -21,7 +21,6 @@ export default function Message({ avatarUrl, message, name, isLatest }) {
       ref={messageRef}
     >
       <Avatar avatarUrl={avatarUrl} />
-
       <Box margin={{ left: 'small' }}>
         <Heading level={6} color="dark-3" margin="none">
           {name}

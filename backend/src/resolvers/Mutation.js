@@ -1,11 +1,11 @@
 const { hash, compare } = require('bcrypt')
 const { sign } = require('jsonwebtoken')
-const { getUserId, AuthError } = require('../utils/getUserId')
+const { getUserId } = require('../utils/getUserId')
 
 const MESSAGE_SENT = 'MESSAGE_SENT'
 
 const Mutation = {
-  signup: async (parent, { name, email, password }, context) => {
+  signup: async (_, { name, email, password }, context) => {
     const hashedPassword = await hash(password, 10)
     const user = await context.prisma.createUser({
       name,
@@ -20,8 +20,9 @@ const Mutation = {
       user,
     }
   },
-  login: async (parent, { email, password }, context) => {
+  login: async (_, { email, password }, context) => {
     const user = await context.prisma.user({ email })
+
     if (!user) {
       throw new Error(`No user found for this email`)
     }
@@ -37,11 +38,10 @@ const Mutation = {
       user,
     }
   },
-
-  signout: (parent, { id }, context) => {
+  signout: () => {
     return { message: ' Goodbye' }
   },
-  sendMessage: async (parent, { message }, context) => {
+  sendMessage: async (_, { message }, context) => {
     const userId = getUserId(context)
 
     const newMessage = await context.prisma.createMessage({
@@ -57,7 +57,7 @@ const Mutation = {
 
     return newMessage
   },
-  updateAvatarUrl: async (parent, { avatarUrl }, context) => {
+  updateAvatarUrl: async (_, { avatarUrl }, context) => {
     const userId = getUserId(context)
 
     const user = await context.prisma.updateUser({
