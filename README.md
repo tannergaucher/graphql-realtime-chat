@@ -1,18 +1,19 @@
 # Realtime Chat App Using GraphQL Subscriptions
 
-## Stack
+## Using
 
 - Apollo Client
-- React Apollo
+- React Apollo Hooks Beta
+- Cloudinary API
 - GraphQL Yoga Server
 - JWT Authentication
-- Prisma Database Layer
+- Prisma Database Client
 
 ## Installation
 
-### Run the backened
+### Run the server
 
-`cd backend && npm install`
+`cd server && npm install`
 
 Activate ENV variables file by deleting .sample prefix from `.env.sample`
 
@@ -34,9 +35,9 @@ Start server
 
 `npm start`
 
-### Run the frontend
+### Run the client
 
-`cd frontend && npm install`
+`cd client && npm install`
 
 `npm start`
 
