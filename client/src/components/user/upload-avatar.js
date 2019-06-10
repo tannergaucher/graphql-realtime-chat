@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Box, Heading, Button } from 'grommet'
 import { navigate } from '@reach/router'
-
 import { useQuery, useMutation } from '@apollo/react-hooks'
+
+import { Error } from '../elements'
 import {
   CURRENT_USER_QUERY,
   UPDATE_AVATAR_URL_MUTATION,
@@ -40,15 +41,20 @@ export default function UploadAvatar() {
       )}
       <Heading level={2}>Set your profile image before entering</Heading>
       {avatarUrl && <img src={avatarUrl} width="200px" alt="Upload preview" />}
-      <form onSubmit={updateAvatarUrl}>
-        <input
-          type="file"
-          name="file"
-          placeholder="upload an image"
-          onChange={uploadFile}
-        />
-        {avatarUrl && <Button label="save avatar and continue" type="submit" />}
-      </form>
+      {error && <Error error={error} />}
+      <fieldset disabled={loading}>
+        <form onSubmit={updateAvatarUrl}>
+          <input
+            type="file"
+            name="file"
+            placeholder="upload an image"
+            onChange={uploadFile}
+          />
+          {avatarUrl && (
+            <Button label="save avatar and continue" type="submit" />
+          )}
+        </form>
+      </fieldset>
       <Button
         label="Skip Image Upload"
         plain

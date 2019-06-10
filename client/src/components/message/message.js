@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { Box, Text, Heading } from 'grommet'
 
-import Avatar from '../user/avatar'
+import { Avatar } from '../user/'
 
 export default function Message({ avatarUrl, message, name, isLatest }) {
   const messageRef = useRef()
