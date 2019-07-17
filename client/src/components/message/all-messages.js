@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 import { Box } from 'grommet'
 
 import { Message } from '.'
@@ -19,15 +18,21 @@ export default function AllMessages() {
 
   useEffect(() => {
     subscribeToNewMessages()
-  }, [])
+  }, [subscribeToNewMessages])
 
   function subscribeToNewMessages() {
     return subscribeToMore({
       document: NEW_MESSAGES_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }) => {
+        console.log('prev', prev)
+        console.log('SUBDATA', subscriptionData)
+
         if (!subscriptionData.data) return prev
+
         const newMessage = subscriptionData.data.messageSent
-        return { messages: [...prev.messages, newMessage] }
+        const messages = prev.messages.concat(newMessage)
+
+        return { messages }
       },
     })
   }
@@ -37,7 +42,6 @@ export default function AllMessages() {
       <Box overflow="scroll">
         {error && <Error error={error} />}
         {loading && <p>Loading..</p>}
-        {!data && <p>There are no messages yet</p>}
         {data &&
           data.messages &&
           data.messages.map((message, index) => (

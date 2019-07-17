@@ -6,7 +6,6 @@ const Query = {
     if (!userId) {
       return null
     }
-
     return context.prisma.user({ id: userId })
   },
   users: async (parent, args, context) => {

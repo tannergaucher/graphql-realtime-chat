@@ -8,8 +8,13 @@ type User {
   isOnline: Boolean @default(value: false)
 }
 
+
 type Message {
   id: ID! @id
   user: User!
   message: String!
 }
+
+
+
+

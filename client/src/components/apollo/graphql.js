@@ -1,17 +1,38 @@
 import gql from 'graphql-tag'
 
-// USER FRAGMENT
-// MESSAGE FRAGMENT
+export const USER_FRAGMENT = gql`
+  fragment UserFragment on User {
+    id
+    name
+    email
+    avatarUrl
+    messages {
+      id
+      message
+    }
+  }
+`
 
-export const CURRENT_USER_QUERY = gql`
-  query {
-    me {
+export const MESSAGE_FRAGMENT = gql`
+  fragment MessageFragment on Message {
+    id
+    message
+    user {
       id
       name
       email
       avatarUrl
     }
   }
+`
+
+export const CURRENT_USER_QUERY = gql`
+  query {
+    me {
+      ...UserFragment
+    }
+  }
+  ${USER_FRAGMENT}
 `
 
 export const IS_LOGGED_IN = gql`
@@ -23,38 +44,28 @@ export const IS_LOGGED_IN = gql`
 export const ALL_MESSAGES_QUERY = gql`
   query ALL_MESSAGES_QUERY {
     messages {
-      id
-      message
-      user {
-        id
-        name
-        avatarUrl
-      }
+      ...MessageFragment
     }
   }
+  ${MESSAGE_FRAGMENT}
 `
 
 export const NEW_MESSAGES_SUBSCRIPTION = gql`
   subscription NEW_MESSAGES_SUBSCRIPTION {
     messageSent {
-      id
-      message
-      user {
-        id
-        name
-        avatarUrl
-      }
+      ...MessageFragment
     }
   }
+  ${MESSAGE_FRAGMENT}
 `
 
 export const SEND_MESSAGE_MUTATION = gql`
   mutation SEND_MESSAGE_MUTATION($message: String!) {
     sendMessage(message: $message) {
-      id
-      message
+      ...MessageFragment
     }
   }
+  ${MESSAGE_FRAGMENT}
 `
 
 export const SIGN_UP_MUTATION = gql`
@@ -66,10 +77,11 @@ export const SIGN_UP_MUTATION = gql`
     signup(name: $name, email: $email, password: $password) {
       token
       user {
-        id
+        ...UserFragment
       }
     }
   }
+  ${USER_FRAGMENT}
 `
 
 export const LOG_IN_MUTATION = gql`
@@ -77,19 +89,18 @@ export const LOG_IN_MUTATION = gql`
     login(email: $email, password: $password) {
       token
       user {
-        id
-        name
-        email
+        ...UserFragment
       }
     }
   }
+  ${USER_FRAGMENT}
 `
 
 export const UPDATE_AVATAR_URL_MUTATION = gql`
   mutation UPDATE_AVATAR_URL_MUTATION($avatarUrl: String!) {
     updateAvatarUrl(avatarUrl: $avatarUrl) {
-      id
-      name
+      ...UserFragment
     }
   }
+  ${USER_FRAGMENT}
 `
