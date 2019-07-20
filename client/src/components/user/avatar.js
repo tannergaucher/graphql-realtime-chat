@@ -38,6 +38,7 @@ function AvatarImage({ small, avatarUrl }) {
 }
 
 function NoAvatar({ small }) {
+  // add a generic user placeholder svg
   return (
     <Box
       background="dark-1"

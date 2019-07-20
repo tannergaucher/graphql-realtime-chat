@@ -4,7 +4,6 @@ import { Link } from '@reach/router'
 import { useQuery } from '@apollo/react-hooks'
 
 import { Logout } from '../user'
-
 import { IS_LOGGED_IN } from '../apollo/graphql'
 
 export default function Header() {
@@ -23,7 +22,7 @@ export default function Header() {
 
 const Brand = () => (
   <Heading level={3} margin="none" color="dark-1">
-    Chat App
+    Realtime Chat App
   </Heading>
 )
 

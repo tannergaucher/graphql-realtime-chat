@@ -3,8 +3,8 @@ import gql from 'graphql-tag'
 export const USER_FRAGMENT = gql`
   fragment UserFragment on User {
     id
-    name
     email
+    name
     avatarUrl
     messages {
       id
@@ -19,8 +19,8 @@ export const MESSAGE_FRAGMENT = gql`
     message
     user {
       id
-      name
       email
+      name
       avatarUrl
     }
   }

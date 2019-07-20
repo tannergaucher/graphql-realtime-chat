@@ -9,10 +9,10 @@ import { Error } from '../elements'
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const client = useApolloClient()
   const [login, { loading, error }] = useMutation(LOG_IN_MUTATION, {
     variables: { email, password },
   })
+  const client = useApolloClient()
 
   return (
     <Box margin={{ vertical: 'large' }}>
@@ -21,6 +21,8 @@ export default function Login() {
           // write user to store too
           client.writeData({ data: { isLoggedIn: true } })
           const res = await login()
+          console.log(res)
+
           localStorage.setItem('token', res.data.login.token)
           navigate(`/`)
         }}

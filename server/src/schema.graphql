@@ -1,3 +1,6 @@
+# import User from '../prisma/generated/prisma.graphql'
+# import Message from "../prisma/generated/prisma.graphql"
+
 scalar DateTime
 scalar Json
 
@@ -8,22 +11,6 @@ type SuccessMessage {
 type AuthPayload {
   token: String!
   user: User!
-}
-
-type User {
-  id: ID!
-  name: String!
-  email: String!
-  password: String!
-  avatarUrl: String
-  messages: [Message]
-  isOnline: Boolean
-}
-
-type Message {
-  id: ID!
-  user: User
-  message: String!
 }
 
 type Query {

@@ -1,5 +1,4 @@
 import React from 'react'
-import gql from 'graphql-tag'
 import { Box } from 'grommet'
 
 import { Header, Main } from '.'
